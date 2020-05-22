@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/fonts/material-icon/css/material-design-iconic-font.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css">
-<title>Registration</title>
+<title>Patient Login</title>
 </head>
 <body>
 	<!--

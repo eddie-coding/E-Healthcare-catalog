@@ -42,7 +42,7 @@ public class DoctorDaoImpl implements DoctorDao {
 	
 }
 
-class DoctorMapper implements RowMapper<Doctor>{
+/*class DoctorMapper implements RowMapper<Doctor>{
 	public Doctor mapRow(ResultSet rs, int arg1) throws SQLException{
 		Doctor doctor = new Doctor();
 		doctor.setId(rs.getString("id"));
@@ -52,4 +52,4 @@ class DoctorMapper implements RowMapper<Doctor>{
 		
 		return doctor;
 	}
-}
+}*/
