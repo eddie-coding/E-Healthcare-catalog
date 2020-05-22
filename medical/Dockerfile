@@ -1,4 +1,3 @@
-FROM openjdk:8-jre-alpine
-ADD target/medical.jar medical.jar
-EXPOSE 8086
-ENTRYPOINT ["java", "-jar", "medical.jar"]
+FROM tomcat:9.0
+WORKDIR /usr/local/tomcat
+ADD target/medical.war webapps/
