@@ -34,6 +34,14 @@
         </exclusion>
     </exclusions>
 </dependency>
+<!-- HTMLUnit Driver -->
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>htmlunit-driver</artifactId>
+    <version>2.26</version>
+</dependency>
+
+
     <!-- Junit -->
     <dependency>
       <groupId>junit</groupId>
@@ -137,10 +145,17 @@
 	<version>2.5</version>
 </dependency>
 <dependency>
-        <groupId>org.seleniumhq.selenium</groupId>
-        <artifactId>selenium-java</artifactId>
-        <version>4.0.0-alpha-5</version>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+     <version>3.3.1</version>
+        <exclusions>
+            <exclusion>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>htmlunit-driver</artifactId>
+            </exclusion>
+        </exclusions>
 </dependency>
+
 <dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>

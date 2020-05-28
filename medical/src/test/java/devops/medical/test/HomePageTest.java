@@ -7,6 +7,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 public class HomePageTest {
 
@@ -17,26 +18,26 @@ public class HomePageTest {
 
 	@BeforeClass
 	public void testSetUp() {
-		driver = new ChromeDriver();
+		driver = new HtmlUnitDriver();
 	}
 
 	@Test
 	public void verifyHomePageTitle() {
-		driver.navigate().to(appURL1);
+		driver.get(appURL1);
 		String getTitle = driver.getTitle();
 		Assert.assertEquals(getTitle, "Welcome");
 	}
 
 	@Test
 	public void verifyPatientLogin() {
-		driver.navigate().to(appURL2);
+		driver.get(appURL2);
 		String getTitle = driver.getTitle();
 		Assert.assertEquals(getTitle, "Patient Login");
 	}
 
 	@Test
 	public void verifyPatientRegistration() {
-		driver.navigate().to(appURL3);
+		driver.get(appURL3);
 		String getTitle = driver.getTitle();
 		Assert.assertEquals(getTitle, "Registration");
 	}
