@@ -55,7 +55,6 @@ public class AdminDaoImpl implements AdminDao{
 		String sql ="select * from Doctor where id= '"+id+"'";
 		return jdbcTemplate.query(sql, new ResultSetExtractor<Doctor>() {
 			
-			@Override
 			public Doctor extractData(ResultSet rs) throws SQLException, DataAccessException {
 				Doctor doctor = new Doctor();
 				if(rs.next()) {
@@ -112,7 +111,6 @@ public class AdminDaoImpl implements AdminDao{
 		String sql ="select * from Lab where id= '"+id+"'";
 		return jdbcTemplate.query(sql, new ResultSetExtractor<Lab>() {
 			
-			@Override
 			public Lab extractData(ResultSet rs) throws SQLException, DataAccessException {
 				Lab lab = new Lab();
 				if(rs.next()) {

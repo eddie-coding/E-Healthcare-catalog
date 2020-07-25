@@ -17,7 +17,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <style>
 	.topnav-right {
-  	float: right;
+ 	 float: right;
 	}
 	.jumbotron {
  	 background-image: url("<%=request.getContextPath()%>/resources/images/bookings.jpg");
@@ -31,28 +31,39 @@
 	<nav class="w3-bar w3-black">
   		<a href="/medical" class="w3-button w3-bar-item">Home</a>
   		
-  		<div class = "topnav-right"><a href="logout" class="w3-button w3-bar-item">Logout</a></div>
+  		<div class = "topnav-right"><a href="/medical/patient/logout" class="w3-button w3-bar-item">Logout</a></div>
 	</nav> 
-  <div class="container">
-  <div class="jumbotron"></div>    
-  <h1>Welcome doctor</h1>      
-  <h2>Your slots are as follows :</h2>
+  <div class="jumbotron"></div> 
+  <div class="container"> 
+  <h1>Welcome</h1>
+  <h2>Available Labs and slots are as follows :</h2>    
+  </div>    
   <table class="table table-dark table-striped">
     <thead>
       <tr>
-        <th>Patient ID</th>
-        <th>Slot Details</th>
+        <th>Lab id</th>
+        <th>Lab Name</th>
+        <th>Lab Type</th>
+        <th>Available Slots</th>
       </tr>
     </thead>
     <tbody>
-    <c:forEach var="slot" items="${bookedslots}" varStatus="status">
-      <tr>
-        <td>${slot.patientid}</td>
-        <td>${slot.bookedslot}</td>
+	<c:if test="${not empty labs}">
+    <c:forEach var="lab" items="${labs}" varStatus="status">      <tr>
+        <td>${lab.id}</td>
+        <td>${lab.name}</td>
+        <td>${lab.type}</td>
+        <td><form:form id="booked${status.index }" action="labbookingprocess" method="post" modelAttribute="bookedlabslots" >
+					<form:select path="bookedlabslot" >
+						<form:options items="${slots[status.index] }" />
+					</form:select>
+					<form:input type="hidden" path="patientid" value="${id }" />
+					<form:input type="hidden" path="id" value="${lab.id }" />
+		 			<input type="submit" name="Submit" value="Submit" tabindex="2" />
+				</form:form></td>
       </tr>
     </c:forEach>
+    </c:if>
     </tbody>
   </table>
-</div>
 </body>
-</html>

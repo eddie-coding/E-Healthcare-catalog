@@ -24,8 +24,13 @@
   <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" value="com.mysql.jdbc.Driver" />
     <property name="url" value="jdbc:mysql://mysql-standalone:3306/devops" />
+<<<<<<< HEAD
     <property name="username" value="root"/>
     <property name="password" value="champion"/>
+=======
+    <property name="username" value="root" />
+    <property name="password" value="shobhit" />
+>>>>>>> e3d78c3480cca805c259eaf795118e46df2e8f67
   </bean>
    
  </beans>

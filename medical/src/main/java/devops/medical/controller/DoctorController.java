@@ -1,5 +1,7 @@
 package devops.medical.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import devops.medical.controller.PatientController.Servlets;
+import devops.medical.model.BookedSlot;
 import devops.medical.model.Doctor;
 import devops.medical.model.DoctorLogin;
 import devops.medical.service.DoctorService;
@@ -53,7 +56,8 @@ public class DoctorController {
 				return new ModelAndView("redirect:/");
 			}
 			ModelAndView mav = new ModelAndView("DoctorCatalog");
-			mav.addObject("id", id);
+			ArrayList<BookedSlot> bookedslots = DoctorService.getAllDoctorSlot(id);
+			mav.addObject("bookedslots", bookedslots);
 			return mav;
 		}else {
 			return new ModelAndView("redirect:/");

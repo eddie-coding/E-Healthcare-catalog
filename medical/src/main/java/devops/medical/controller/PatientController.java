@@ -27,9 +27,11 @@ import org.springframework.web.servlet.view.RedirectView;
 import devops.medical.model.Patient;
 import devops.medical.service.PatientService;
 import devops.medical.model.PatientLogin;
+import devops.medical.model.BookedLabSlot;
 import devops.medical.model.BookedSlot;
 import devops.medical.model.Doctor;
 import devops.medical.model.DoctorSlots;
+import devops.medical.model.Lab;
 
 @Controller
 public class PatientController {
@@ -127,6 +129,35 @@ public class PatientController {
 		}
 	}
 	
+	@RequestMapping(value="/patient/{id}/booklab", method=RequestMethod.GET)
+	public ModelAndView booklab(HttpServletRequest request, HttpServletResponse response, @PathVariable(value="id") String id, @CookieValue(value="username", defaultValue="unknown") String userCookie, @CookieValue(value="type", defaultValue="unknown") String typeCookie) {
+		if(typeCookie.equals("unknown")) {
+			return new ModelAndView("redirect:/");
+		}
+		else if(typeCookie.equals("doctor")) {
+			return new ModelAndView("redirect:/doctor/"+userCookie);
+		}
+		else if(typeCookie.equals("patient")){
+			if(userCookie.equals("unknown") || (!userCookie.equals(id))) {
+				return new ModelAndView("redirect:/");
+			}
+			ModelAndView mav = new ModelAndView("PatientLabCatalog");
+			List<Lab> labs = patientservice.getAllLabs();
+			ArrayList<ArrayList<String> > available = new ArrayList<ArrayList<String>>();
+			for(Lab lab: labs) {
+				ArrayList<String> slots = patientservice.validDates(lab.getId());
+				available.add(slots);
+			}
+			mav.addObject("id", id);
+			mav.addObject("labs", labs);
+			mav.addObject("slots", available);
+			mav.addObject("bookedlabslots", new BookedLabSlot());
+			return mav;
+		}else {
+			return new ModelAndView("redirect:/");
+		}
+	}
+	
 	@RequestMapping(value="/patient/{id}/bookings", method=RequestMethod.GET)
 	public ModelAndView bookings(HttpServletRequest request, HttpServletResponse response, @PathVariable(value="id") String id, @CookieValue(value="username", defaultValue="unknown") String userCookie, @CookieValue(value="type", defaultValue="unknown") String typeCookie) {
 		if(typeCookie.equals("unknown")) {
@@ -142,6 +173,8 @@ public class PatientController {
 			ModelAndView mav = new ModelAndView("Bookings");
 			ArrayList<BookedSlot> bookedslots = patientservice.getAllBookedSlot(id);
 			mav.addObject("bookedslots", bookedslots);
+			ArrayList<BookedLabSlot> bookedlabslots = patientservice.getAllBookedLabSlot(id);
+			mav.addObject("bookedlabslots", bookedlabslots);
 			return mav;
 		}else {
 			return new ModelAndView("redirect:/");
@@ -216,6 +249,28 @@ public class PatientController {
 			System.out.println(bookedslot.getBookedslot()+" ****** ");//bookedslot.getId());
 			String id = bookedslot.getPatientid();
 			patientservice.updateSlot(bookedslot);
+			return new ModelAndView("redirect:/patient/"+id);
+		}else {
+			return new ModelAndView("redirect:/");
+		}
+	}
+	
+	@RequestMapping(value="/patient/{patientid}/labbookingprocess", method=RequestMethod.POST)
+	public ModelAndView labbookingprocess(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("bookedlabslots") BookedLabSlot bookedlabslot, RedirectAttributes redirectAttrs, @PathVariable(value="patientid") String patientid, @CookieValue(value="username", defaultValue="unknown") String userCookie, @CookieValue(value="type", defaultValue="unknown") String typeCookie) throws ParseException {
+		if(typeCookie.equals("unknown")) {
+			return new ModelAndView("redirect:/");
+		}
+		else if(typeCookie.equals("doctor")) {
+			return new ModelAndView("redirect:/doctor/"+userCookie);
+		}
+		else if(typeCookie.equals("patient")){
+			if(userCookie.equals("unknown") || (!userCookie.equals(patientid))) {
+				System.out.println("****"+patientid);
+				return new ModelAndView("redirect:/patientloginandsignup");
+			}
+			System.out.println(bookedlabslot.getBookedlabslot()+" ****** ");//bookedslot.getId());
+			String id = bookedlabslot.getPatientid();
+			patientservice.updateLabSlot(bookedlabslot);
 			return new ModelAndView("redirect:/patient/"+id);
 		}else {
 			return new ModelAndView("redirect:/");

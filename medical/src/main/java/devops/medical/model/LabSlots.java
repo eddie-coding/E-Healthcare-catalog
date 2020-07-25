@@ -1,10 +1,11 @@
 package devops.medical.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class LabSlots {
 	private String id;
-	private Date timing;
+	private LocalDateTime timing;
 	private String patient_id;
 	
 	public String getId() {
@@ -13,10 +14,10 @@ public class LabSlots {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public Date getTiming() {
+	public LocalDateTime getTiming() {
 		return timing;
 	}
-	public void setTiming(Date timing) {
+	public void setTiming(LocalDateTime timing) {
 		this.timing = timing;
 	}
 	public String getPatient_id() {

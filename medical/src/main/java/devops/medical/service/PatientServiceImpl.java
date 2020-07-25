@@ -13,9 +13,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import devops.medical.model.BookedLabSlot;
 import devops.medical.model.BookedSlot;
 import devops.medical.model.Doctor;
 import devops.medical.model.DoctorSlots;
+import devops.medical.model.Lab;
 import devops.medical.model.Patient;
 import devops.medical.dao.PatientDao;
 import devops.medical.model.PatientLogin;
@@ -43,6 +45,10 @@ public class PatientServiceImpl implements PatientService {
 	
 	public List<Doctor> getAllDoctors(){
 		return PatientDao.getAllDoctors();
+	}
+	
+	public List<Lab> getAllLabs(){
+		return PatientDao.getAllLabs();
 	}
 	
 	//Slots of a specific doctor
@@ -87,8 +93,15 @@ public class PatientServiceImpl implements PatientService {
 		return PatientDao.updateSlot(bookedslot);
 	}
 	
+	public int updateLabSlot(BookedLabSlot bookedlabslot) {
+		return PatientDao.updateLabSlot(bookedlabslot);
+	}
+	
 	public ArrayList<BookedSlot> getAllBookedSlot(String patientid){
 		return PatientDao.getAllBookedSlot(patientid);
 	}
 	
+	public ArrayList<BookedLabSlot> getAllBookedLabSlot(String patientid){
+		return PatientDao.getAllBookedLabSlot(patientid);
+	}
 }

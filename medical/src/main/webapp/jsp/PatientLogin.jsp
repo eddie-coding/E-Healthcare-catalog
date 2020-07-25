@@ -5,12 +5,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/fonts/material-icon/css/material-design-iconic-font.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css">
 <title>Patient Login</title>
 </head>
 <body>
+	<!-- Navigation -->
+	<nav class="w3-bar w3-black">
+  		<a href="home.jsp" class="w3-button w3-bar-item">Home</a>
+  		<a href="adminlogin" class="w3-button w3-bar-item">Administrator</a>
+  		<a href="doctorlogin" class="w3-button w3-bar-item">Doctor</a>
+  		<a href="patientloginandsignup" class="w3-button w3-bar-item">Patient</a>
+	</nav> 
 	<!--
 	 <form:form id="regForm" modelAttribute="patient" action="patientloginprocess"
 		method="post" class="text-center border border-light p-5" style="margin-left: 20%; margin-right: 20%;margin-top: 10%;box-shadow: 0 4px 8px 0 #71dee5, 0 6px 20px 0 rgba(0, 0, 0, 0.19);">		

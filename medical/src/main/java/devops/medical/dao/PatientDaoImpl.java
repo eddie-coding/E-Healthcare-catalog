@@ -18,9 +18,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import devops.medical.model.BookedLabSlot;
 import devops.medical.model.BookedSlot;
 import devops.medical.model.Doctor;
 import devops.medical.model.DoctorSlots;
+import devops.medical.model.Lab;
+import devops.medical.model.LabSlots;
 import devops.medical.model.Patient;
 import devops.medical.model.PatientLogin;
 
@@ -64,6 +67,13 @@ public class PatientDaoImpl implements PatientDao {
 		return doctors;
 	}
 	
+	public List<Lab> getAllLabs(){
+		String sql = "select * from Lab";
+		List<Lab> labs = jdbcTemplate.query(sql, new LabMapper());
+		System.out.println(labs.size());
+		return labs;
+	}
+	
 	public HashSet<LocalDateTime> getAllSlots(String id){
 		String sql = "select * from DoctorSlots where id='"+id+"'";
 		List<DoctorSlots> allMeetings = jdbcTemplate.query(sql, new DoctorSlotsMapper());
@@ -78,6 +88,12 @@ public class PatientDaoImpl implements PatientDao {
 		String sql = "insert into DoctorSlots values (?,?,?)";
 		java.sql.Timestamp timing = java.sql.Timestamp.valueOf(bookedslot.getBookedslot());
 		return jdbcTemplate.update(sql, new Object[] {bookedslot.getId(), timing, bookedslot.getPatientid()});
+	}
+	
+	public int updateLabSlot(BookedLabSlot bookedlabslot) {
+		String sql = "insert into LabSlots values (?,?,?)";
+		java.sql.Timestamp timing = java.sql.Timestamp.valueOf(bookedlabslot.getBookedlabslot());
+		return jdbcTemplate.update(sql, new Object[] {bookedlabslot.getId(), timing, bookedlabslot.getPatientid()});
 	}
 	
 	public ArrayList<BookedSlot> getAllBookedSlot(String patientid){
@@ -96,6 +112,22 @@ public class PatientDaoImpl implements PatientDao {
 		return bookings;
 	}
 	
+	public ArrayList<BookedLabSlot> getAllBookedLabSlot(String patientid){
+		String sql = "select * from LabSlots where patient_id = '"+patientid+"'";
+		List<LabSlots> patients = jdbcTemplate.query(sql, new LabSlotsMapper());
+		ArrayList<BookedLabSlot> labbookings = new ArrayList<BookedLabSlot>();
+		for(LabSlots patient: patients) {
+			BookedLabSlot temp = new BookedLabSlot();
+			temp.setId(patient.getId());
+			temp.setPatientid(patient.getPatient_id());
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			String time = patient.getTiming().format(formatter);
+			temp.setBookedlabslot(time);
+			labbookings.add(temp);
+		}
+		return labbookings;
+	}
+	
 }
 
 class PatientMapper implements RowMapper<Patient>{
@@ -109,9 +141,23 @@ class PatientMapper implements RowMapper<Patient>{
 	}
 }
 
+
 class DoctorSlotsMapper implements RowMapper<DoctorSlots>{
 	public DoctorSlots mapRow(ResultSet rs, int arg1) throws SQLException {
 		DoctorSlots meeting = new DoctorSlots();
+		meeting.setId(rs.getString("id"));
+		meeting.setPatient_id(rs.getString("patient_id"));
+		Date timing1 = new Date(rs.getTimestamp("timing").getTime());
+		LocalDateTime timing = LocalDateTime.ofInstant(timing1.toInstant(),ZoneId.systemDefault());
+		meeting.setTiming(timing);
+		
+		return meeting;
+	}
+}
+
+class LabSlotsMapper implements RowMapper<LabSlots>{
+	public LabSlots mapRow(ResultSet rs, int arg1) throws SQLException {
+		LabSlots meeting = new LabSlots();
 		meeting.setId(rs.getString("id"));
 		meeting.setPatient_id(rs.getString("patient_id"));
 		Date timing1 = new Date(rs.getTimestamp("timing").getTime());

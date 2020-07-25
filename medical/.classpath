@@ -30,6 +30,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="/home/eddie/eclipse/jstl.jar"/>
 	<classpathentry kind="lib" path="/home/eddie/eclipse/jstl-impl.jar"/>
 	<classpathentry kind="lib" path="/home/eddie/eclipse/jstl-standard.jar"/>
@@ -99,5 +100,37 @@
 	<classpathentry kind="lib" path="/home/eddie/eclipse/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-websocket-5.2.5.RELEASE-javadoc.jar"/>
 	<classpathentry kind="lib" path="/home/eddie/eclipse/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-websocket-5.2.5.RELEASE-sources.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+=======
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-websocket-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-webmvc-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-webflux-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-web-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-tx-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-test-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-oxm-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-orm-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-messaging-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-jms-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-jdbc-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-jcl-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-instrument-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-expression-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-core-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-context-support-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-context-indexer-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-context-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-beans-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-aspects-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/spring-5.2.5.RELEASE-dist/spring-framework-5.2.5.RELEASE/libs/spring-aop-5.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/jstl-standard.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/jstl-impl.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/jstl.jar"/>
+	<classpathentry kind="lib" path="/home/noobcj/Downloads/commons-logging-1.2.jar"/>
+>>>>>>> e3d78c3480cca805c259eaf795118e46df2e8f67
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
