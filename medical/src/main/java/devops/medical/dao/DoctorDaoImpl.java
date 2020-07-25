@@ -44,21 +44,6 @@ public class DoctorDaoImpl implements DoctorDao {
 		return doctors.size()>0?doctors.get(0):null;
 	}
 	
-<<<<<<< HEAD
-}
-
-/*class DoctorMapper implements RowMapper<Doctor>{
-	public Doctor mapRow(ResultSet rs, int arg1) throws SQLException{
-		Doctor doctor = new Doctor();
-		doctor.setId(rs.getString("id"));
-		doctor.setUsername(rs.getString("name"));
-		doctor.setType(rs.getString("type"));
-		doctor.setPassword(rs.getString("password"));
-		
-		return doctor;
-	}
-}*/
-=======
 	public ArrayList<BookedSlot> getAllDoctorSlot(String id){
 		String sql = "select * from DoctorSlots where id = '"+id+"'";
 		System.out.println("reached here with id");
@@ -77,4 +62,3 @@ public class DoctorDaoImpl implements DoctorDao {
 		return bookings;
 	}
 }
->>>>>>> e3d78c3480cca805c259eaf795118e46df2e8f67
